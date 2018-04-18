@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!--Inspired by Treehouse javascript course -->
+<!-- The project started out as a Treehouse javascript assignment, 
+turned into a fun project with alot more features and some other changes. -->
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Guestlist (RSVP)</title>
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="favico.ico">
+</head>
+
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>RSVP</h1>
+            <p>Keep track of your guestlist!</p>
+            <form id="registrar">
+                <input autocomplete="off" type="text" name="name" placeholder="Invite someone">
+                <button type="submit" name="submit" value="submit">Submit</button>
+            </form>
+            <span id="validationText"></span>
+        </header>
+        <div class="main">
+            <div class="mainInfo">
+                <h2><span></span></h2>
+                <span>
+                <span id="listInfo">
+                <span></span>
+                <span></span>
+                </span>
+                </span>
+            </div>
+            <ul id="invitedList"></ul>
+            <footer><span> Made by (Wybe van den Bosch)</span></footer>
+        </div>
+    </div>
+    <script type="text/javascript" src="app.js"></script>
+</body>
+</html>
