@@ -117,7 +117,8 @@ header {
     background: linear-gradient(90deg,#d4eece, #55b3d0, #1e7eb7), 
         url('../images/guestlistFaded.jpg') no-repeat;
     background-blend-mode: multiply;    
-    background-size: cover; 
+    background-size: cover;
+    background-position: left;
 }
 header input {
     padding: 12px;
@@ -129,6 +130,8 @@ li input[type=text] {
     color: #707070;
     font-size: 1.3em;
     margin-bottom: .3em;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 li input[type=text] {
     padding: .2em;
@@ -185,6 +188,7 @@ div > label {
     color: rgba(88, 183, 205, 1);
 }
 footer {
+    margin-top: 10px;
     opacity: 0.5;
     font-style: italic;
     color: black;
@@ -232,10 +236,9 @@ footer {
 }
 /* Large Screens */
 @media (min-width: 769px) {
-        header {
+    header {
         height: 280px;
         padding: 2.5em 1em 1em;
-        background-position: 0 -95px;
     }
    
     .mainInfo {
@@ -256,7 +259,6 @@ footer {
         font-size: 5.8em;
     }
     h2 {
-        float: left;
         font-size: 1.9em;
 
     }
@@ -275,27 +277,18 @@ footer {
         background-color:#EBFAFF ;
     }
     ul {
-        display: -webkit-flex;
         display: flex;
-        clear: both;
-
-        -webkit-justify-content: space-between;
-        justify-content: space-between;
-        -webkit-flex-wrap: wrap;
         flex-wrap: wrap;
         padding-top: 1.25em;
+        margin: -10px;
     }
     ul li {
-        -webkit-flex-grow: 1;
-        flex-grow: 1;
-        -webkit-flex-basis: 47.5%;
-        flex-basis: 47.5%;
-        margin: 0 1.25% 1em;
+        margin: 10px;
+        width: calc(33.33333% - 20px);
     }
 }
 @media (min-width: 880px) {
     ul li {
-        -webkit-flex-basis: 20%;
-        flex-basis: 20%;
+        width: calc(25% - 20px);
     }
 }

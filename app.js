@@ -50,7 +50,8 @@ const htmlTxt = {
     classFormReset: "formReset",
     errorTextWrong: "That does not seem to be a name!",
     errorTextExists: "That person is already on the guestList!",
-    listInfoHeader: "Invitees: ",
+    listInfoHeaderSingle: "invitee",
+    listInfoHeaderMulti: "invitees",
     confirmedTotalText: "Confirmed:",
     unconfirmedTotalText: "Unconfirmed:",
     labelTextContentDefault: "Unconfirmed",
@@ -59,7 +60,7 @@ const htmlTxt = {
     unconfirmedText: "Unconfirmed",
     nameEditPlaceholder: "Insert a name please!",
     nameChangedTo: "changed to2 :",
-    editButtonTitle:"Edit Name",
+    editButtonTitle: "Edit Name",
 }
 
 //===============================================================================\\
@@ -69,8 +70,8 @@ const htmlTxt = {
 document.addEventListener('DOMContentLoaded', () => {
     //=====OnPageLoad======\\
     createFilterArea();
-    guestCount();//Counts all guests, displays values and hides stuff if empty. 
-    loadLocalStorage();//loads 
+    guestCount(); //Counts all guests, displays values and hides stuff if empty. 
+    loadLocalStorage(); //loads 
 });
 
 //===============================================================================\\
@@ -127,11 +128,15 @@ function guestCount() {
         }
     }
     if (totalGuests > 0) {
-        listInfoHeader.innerHTML = htmlTxt['listInfoHeader'] + " (" + totalGuests + ")";
-        listInfoSpans[0].innerHTML = htmlTxt['confirmedTotalText'] + 
-        " <span>" + attendingGuests+"</span>";
-        listInfoSpans[1].innerHTML = htmlTxt['unconfirmedTotalText'] + 
-        " <span>" + unconfirmedGuests+"</span>";
+        if (totalGuests == 1) {
+            listInfoHeader.innerHTML = totalGuests + ' ' + htmlTxt.listInfoHeaderSingle;
+        } else {
+            listInfoHeader.innerHTML = totalGuests + ' ' + htmlTxt.listInfoHeaderMulti;
+        }
+        listInfoSpans[0].innerHTML = htmlTxt.confirmedTotalText +
+            " <span>" + attendingGuests + "</span>";
+        listInfoSpans[1].innerHTML = htmlTxt.unconfirmedTotalText +
+            " <span>" + unconfirmedGuests + "</span>";
         filterCheckboxArea.style.display = "";
         ul.style.display = "";
     } else if (totalGuests < 1) {
@@ -140,7 +145,7 @@ function guestCount() {
         listInfoSpans[0].innerHTML = "";
         listInfoSpans[1].innerHTML = "";
         filterCheckboxArea.style.display = "none";
-        ul.style.display ="none";
+        ul.style.display = "none";
     }
 }
 //===============================================================================\\
@@ -292,12 +297,12 @@ function checkboxClassToggle(e) {
         listItem.className = 'unresponsive';
         listItem.querySelector('label input').title = "sSet as Confirmed";
         const theSpan = listItem.querySelector('span');
-        
+
         if (theSpan) {
             //BUG: Fires weirdly while during edit
             console.log("[" + theSpan.textContent + "] " + logTxt['checkboxUnconfirmed']);
             checkbox.parentNode.firstChild.textContent = htmlTxt['unconfirmedText'];
-            
+
         }
         updateOnChange();
     }
