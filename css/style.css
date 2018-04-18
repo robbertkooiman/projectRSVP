@@ -97,12 +97,25 @@ ul {
     border-top: 1px solid #ccc;
 }
 ul li {
+    transition: all 0.4s ease;
     padding: 1em;
     background: #fff;
     border-radius: .2em;
     border: solid 1px #CCCCCC;
     position: relative; 
 }
+
+ul li.removed {
+    animation: remove 0.5s ease-in;
+}
+
+@keyframes remove {
+    to {
+        transform: translate(1000px);
+        opacity: 0;
+    }
+}
+
 button {
     cursor: pointer;
 }
@@ -148,6 +161,28 @@ li span,
 li input[type=text]:first-child {
     display: block;
 }
+li input[type=checkbox] {
+    margin: 0 0 -4px 8px;
+    -webkit-appearance: button;
+    height: 20px;
+    border-radius: 4px;
+    background-color: #f5f5f5;
+    border: 2px solid #f5f5f5;
+    width: 20px;
+}
+li input[type=checkbox]:checked:after {
+    display: block;
+    content: '';
+    width: 8px;
+    height: 4px;
+    border-bottom: 2px solid #323232;
+    border-left: 2px solid #323232;
+    transform: rotate(-45deg);
+    margin: 4px 0 0 3px;
+}
+li input[type=checkbox]:focus {
+    border-bottom: 2px solid #58b7cd;
+}
 li button {
     font-size: .78em;
     margin-top: 1.65em;
@@ -180,11 +215,9 @@ div > label {
 /* responded */
 
 .responded {
-    transition: 0.4s;
     border-color: rgba(88, 183, 205, .9);
 }
 .responded label {
-    transition: 0.4s;
     color: rgba(88, 183, 205, 1);
 }
 footer {

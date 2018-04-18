@@ -325,8 +325,11 @@ function guestButtonEvents(e) {
                 } else {
                     console.log("[" + spanContent + "] " + logTxt['gotRemoved']);
                 }
-                ul.removeChild(li);
-                updateOnChange();
+                li.className += ' removed';
+                setTimeout(function() {
+                    ul.removeChild(li);
+                    updateOnChange();
+                }, 450);
             },
             edit: () => {
                 const input = document.createElement('input');
